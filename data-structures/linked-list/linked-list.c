@@ -41,7 +41,7 @@ void add_employee(struct ll *list,char *name,int age,int salary)
 {	
 	struct worker new_worker = {name,age,salary};
 	struct node *new_node = (struct node *) malloc(sizeof(struct node));
-	new_node -> next = NULL;
+	new_node -> next = NULL; // (*new_node).next = NULL
 	new_node -> value = new_worker;
 	if(list -> head == NULL && list -> tail == NULL)
 	{
