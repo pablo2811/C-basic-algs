@@ -6,12 +6,19 @@
 int main(int argc, char const *argv[])
 {
 	BinaryTree *b = (BinaryTree*)malloc(sizeof(BinaryTree));
-	add_vertice(b,10);
-	add_vertice(b,5);
-	add_vertice(b,12);
-	add_vertice(b,1);
+	int n;
+	scanf("%i",&n);
+	while(n--)
+	{
+		int val;
+		scanf("%i",&val);
+		add_vertice(b,val);
+	}
 	bfs_print(b);
 	dfs_print(b);
+	printf("There are %i pairs of first cousins.\n", common_grandpa(b));
+
+
 	return(0);
 
 }

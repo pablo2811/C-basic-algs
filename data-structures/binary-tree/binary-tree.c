@@ -86,6 +86,39 @@ int max_depth(BinaryTree *B)
 
 }
 
+int desc_num(Node *n){
+	return(((n->left)!= NULL) + ((n->right)!=NULL));
+}
+
+
+int common_grandpa(BinaryTree *b)
+{
+	Queue *Q = (Queue*)malloc(sizeof(Queue));
+	if(b->root == NULL){
+		return 0;
+	}
+	add_to_queue(Q,b->root);
+	int pairs = 0;
+	while(Q -> start != NULL){
+		Elem *e = pop_queue(Q);
+		if(e->nd->left != NULL && e->nd->right != NULL)
+		{
+			pairs += desc_num(e->nd->left) * desc_num(e->nd->right);
+		}
+		if(e->nd->left != NULL){
+			add_to_queue(Q,e->nd->left);
+			
+		}
+		if(e->nd->right != NULL){
+			add_to_queue(Q,e->nd->right);
+			
+		}
+	}
+	return(pairs);
+}
+
+
+
 void bfs_print(BinaryTree *B){
 	Queue *Q = (Queue*)malloc(sizeof(Queue));
 	if(B->root == NULL){
